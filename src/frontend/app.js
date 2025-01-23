@@ -2,6 +2,22 @@
 const BASE_URL = "http://localhost:3000";
 
 // Función para obtener datos del ranking de películas
+function fetchSearchEngine() {
+    const busqueda = document.getElementById("search-ranking").value; // ID correcto
+    fetch(`${BASE_URL}/peliculas/filtro?like=${encodeURIComponent(busqueda)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al obtener los datos.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data); // Mostrar resultados en la consola
+            renderRankingData(data); // Función para renderizar la tabla
+        })
+        .catch(error => console.error("Error:", error));
+}
+
 async function fetchRankingData() {
     try {
         // Realiza la solicitud al backend
@@ -27,7 +43,7 @@ async function fetchRankingData() {
 // Función para renderizar los datos en la tabla
 function renderRankingData(data) {
     const rankingDataElement = document.getElementById("ranking-data");
-    tbody.innerHTML = "";
+
     // Verifica si hay datos
     if (data.length === 0) {
         rankingDataElement.innerHTML = `<tr><td colspan="4">No se encontraron datos.</td></tr>`;
