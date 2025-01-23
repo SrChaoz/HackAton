@@ -17,6 +17,12 @@ function fetchSearchEngine() {
         })
         .catch(error => console.error("Error:", error));
 }
+let debounceTimer;
+function debounceFetchSearch() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(fetchSearchEngine, 300); // 300ms de espera
+}
+
 
 async function fetchRankingData() {
     try {
