@@ -25,6 +25,10 @@
     </header>
 
     <section>
+        <input type="text" id="search-ranking" placeholder="Buscar por título o década..." onkeyup="searchRanking()">
+    </section>
+
+    <section>
         <table>
             <thead>
                 <tr>
@@ -38,6 +42,12 @@
                 <!-- Datos del reporte se cargarán aquí -->
             </tbody>
         </table>
+    </section>
+
+    <section id="pagination">
+        <button id="prev-page" onclick="changePage(currentPage - 1)">Anterior</button>
+        <span id="page-numbers"></span>
+        <button id="next-page" onclick="changePage(currentPage + 1)">Siguiente</button>
     </section>
 
     <footer>
