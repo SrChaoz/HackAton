@@ -107,7 +107,7 @@ app.get("/peliculas/decade-ranking", async (req, res) => {
         oscars, 
         nominations, 
         (oscars + nominations) AS total_awards
-      FROM movies
+      FROM peliculas
       WHERE oscars IS NOT NULL AND nominations IS NOT NULL
       ORDER BY decade ASC, total_awards DESC
     `);
@@ -125,7 +125,7 @@ app.get("/peliculas/average-duration", async (req, res) => {
       SELECT 
         year, 
         ROUND(AVG(duration::NUMERIC), 2) AS avg_duration
-      FROM movies
+      FROM peliculas
       WHERE duration IS NOT NULL
       GROUP BY year
       ORDER BY year ASC
@@ -146,7 +146,7 @@ app.get("/peliculas/top-directors", async (req, res) => {
         COUNT(*) AS movie_count
       FROM (
         SELECT UNNEST(directors) AS director
-        FROM movies
+        FROM peliculas
       ) AS unnest_directors
       GROUP BY director
       ORDER BY movie_count DESC
