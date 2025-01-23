@@ -208,6 +208,20 @@ app.get("/peliculas/languages", async (req, res) => {
     }
   });
   
+
+app.get("/peliculas/filtro", async (req, res) => {
+    try {
+      const { like } = req.query; // Obtener el término de búsqueda desde los parámetros
+      const result = await pool.query(
+        `SELECT * FROM peliculas WHERE title ILIKE $1`,
+        [`%${like}%`]
+      );
+      res.json(result.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Error al filtrar películas");
+    }
+});
   
 
 

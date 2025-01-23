@@ -42,6 +42,7 @@ async function fetchRankingData() {
     } catch (error) {
         console.error("Error:", error.message);
         const rankingDataElement = document.getElementById("ranking-data");
+        tbody.innerHTML = "";
         rankingDataElement.innerHTML = `<tr><td colspan="4">Error al cargar los datos. Intenta nuevamente más tarde.</td></tr>`;
     }
 }

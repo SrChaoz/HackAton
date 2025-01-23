@@ -1,0 +1,276 @@
+/* Estilo global */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('imagenes/fondo.jpeg');
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: relative;
+}
+
+/* Pseudo-elemento para el oscurecimiento y difuminado */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(1px);
+  z-index: -1; 
+}
+
+
+h1, h2, p {
+  color: #e9e1e1;
+  text-align: center;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
+  font-size: 3rem;
+
+}
+
+h1 {
+  font-size: 3rem; /* Tamaño grande para h1 */
+}
+
+h2 {
+  font-size: 2rem; /* Tamaño mediano para h2 */
+}
+
+p {
+  font-size: 1.2rem; /* Tamaño más pequeño para p */
+}
+
+nav {
+  background-color: #333;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav ul li a.active {
+  color: #FFD700;
+}
+
+/* Pestañas */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+
+.tabs ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tabs ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+/* Estilo normal para los enlaces */
+nav ul li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px; /* Bordes redondeados */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el mouse */
+nav ul li a:hover {
+  transform: scale(1.1); /* Crece un 10% al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra flotante */
+  background-color: #555; /* Cambia el color de fondo */
+}
+
+/* Estilo para la pestaña activa */
+nav ul li a.active {
+  transform: scale(1.1); /* Mantiene el escalado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Mantiene la sombra */
+  background-color: #555; /* Mantiene el color de fondo */
+}
+
+
+section {
+  max-width: 1200px;
+  margin: 30px auto;
+  background-color: transparent; /* Hace que el fondo sea transparente */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para mantener el contraste */
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+/* Estilos para el gráfico */
+#grafico-idiomas {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+}
+
+/* Pie de página */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.imagen-centrada {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%; /* Ajusta la imagen a su contenedor */
+  border: 3px solid #363636; /* Borde de color azul */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para un efecto flotante */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.imagen-centrada:hover {
+  transform: scale(1.05); /* Hace que la imagen crezca un poco cuando pasas el mouse sobre ella */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Aumenta la sombra en hover */
+}
+
+.texto-centrado {
+  text-align: center;
+}
+
+/* Estilo para los cuadros de búsqueda */
+input[type="text"] {
+  padding: 10px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="text"]:focus {
+  border-color: #535353;
+  outline: none;
+}
+
+/* Estilos para los botones de paginación */
+#pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+#pagination #page-numbers button {
+  padding: 5px 10px;
+}
+
+#pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+
+.barra-busqueda {
+  border: 1px solid #3b3b3b; /* Borde fino */
+  border-radius: 10px; /* Bordes más redondeados */
+  padding: 2px 4px; /* Reducción del padding arriba y abajo */
+  height: 35px;
+  margin: 2 auto; /* Centra la barra de búsqueda */
+  display: flex; /* Para alinear los elementos horizontalmente */
+  align-items: center; /* Centra verticalmente el input y el icono */
+  position: relative; /* Para posicionar el icono dentro del input */
+}
+
+.barra-busqueda input {
+  border: none;
+  padding: 4px 10px;
+  width: 100%; 
+  border-radius: 15px; 
+  max-width: 2500px;
+  outline: none;
+  font-size: 14px;
+}
+
+.barra-busqueda button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  position: absolute; /* Posicionar el icono dentro del input */
+  right: 10px; /* Ajusta el icono a la derecha */
+}
+
+.barra-busqueda button i {
+  color: #434444; 
+  font-size: 16px; 
+}
+
+/* Efecto al hacer foco en el campo de texto */
+.barra-busqueda input:focus {
+  border-color: #535353;
+  outline: none;
+}
+
