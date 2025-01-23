@@ -181,16 +181,17 @@ app.get("/peliculas/top-directors", async (req, res) => {
 app.get("/peliculas/languages", async (req, res) => {
     try {
       const result = await pool.query(`
-        SELECT 
-          language, 
-          COUNT(*) AS movie_count
-        FROM (
-          SELECT UNNEST(STRING_TO_ARRAY(languages, ',')) AS language
-          FROM peliculas
-        ) AS unnest_languages
-        GROUP BY language
-        ORDER BY movie_count DESC
-        LIMIT 10; -- Mostrar los 10 idiomas más representados
+       SELECT 
+  TRIM(BOTH ' ' FROM LOWER(REGEXP_REPLACE(languages, '[\[\]{}\']', ''))) AS language,  -- Limpieza total de los caracteres adicionales
+  COUNT(*) AS movie_count
+FROM (
+  SELECT UNNEST(STRING_TO_ARRAY(languages, ',')) AS language
+  FROM peliculas
+) AS unnest_languages
+GROUP BY language
+ORDER BY movie_count DESC
+LIMIT 10;
+
       `);
       res.json(result.rows);
     } catch (err) {
