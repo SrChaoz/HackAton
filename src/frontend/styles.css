@@ -44,7 +44,9 @@ nav ul li a.active {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al pasar el mouse */
 }
+
 
 .tabs ul {
   list-style: none;
@@ -114,8 +116,28 @@ footer {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 1px;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.imagen-centrada {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%; /* Ajusta la imagen a su contenedor */
+  border: 3px solid #363636; /* Borde de color azul */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para un efecto flotante */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.imagen-centrada:hover {
+  transform: scale(1.05); /* Hace que la imagen crezca un poco cuando pasas el mouse sobre ella */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Aumenta la sombra en hover */
+}
+
+.texto-centrado {
+  text-align: center;
 }
