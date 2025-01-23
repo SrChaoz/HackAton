@@ -101,6 +101,7 @@ async function fetchPromedioDuracion() {
     }
 }
 
+//funcion para obtener datos de directores
 async function fetchDirectorsData() {
     try {
         // Realiza la solicitud al backend
@@ -123,7 +124,7 @@ async function fetchDirectorsData() {
     }
 }
 
-// Función para renderizar los datos en la tabla
+// Función para renderizar los datos de directores en la tabla
 function renderDirectorsData(data) {
     const DirectorsElement = document.getElementById("directores-data");
 

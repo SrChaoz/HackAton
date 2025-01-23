@@ -154,16 +154,17 @@ app.get("/peliculas/average-duration", async (req, res) => {
 app.get("/peliculas/top-directors", async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT 
-        director, 
-        COUNT(*) AS movie_count
-      FROM (
-        SELECT UNNEST(directors) AS director
+    SELECT 
+      director, 
+      COUNT(*) AS movie_count
+        FROM (
+        SELECT UNNEST(STRING_TO_ARRAY(directors, ',')) AS director
         FROM peliculas
-      ) AS unnest_directors
-      GROUP BY director
-      ORDER BY movie_count DESC
-      LIMIT 10
+        ) AS unnest_directors
+    GROUP BY director
+    ORDER BY movie_count DESC
+    LIMIT 10;
+
     `);
     res.json(result.rows);
   } catch (err) {
