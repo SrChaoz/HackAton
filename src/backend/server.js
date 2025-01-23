@@ -19,7 +19,7 @@ const pool = new Pool({
 // Endpoint para obtener todas las películas
 app.get("/movies", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM movies");
+    const result = await pool.query("SELECT * FROM peliculas");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
@@ -28,7 +28,7 @@ app.get("/movies", async (req, res) => {
 });
 
 // Endpoint para agregar una nueva película
-app.post("/movies", async (req, res) => {
+app.post("/peliculas", async (req, res) => {
   const {
     id,
     title,
@@ -56,7 +56,7 @@ app.post("/movies", async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO movies (
+      `INSERT INTO peliculas (
         id, title, year, duration, mpa, rating, votes, budget, gross_worldwide, 
         gross_us_canada, opening_weekend_gross, directors, writers, stars, genres, 
         countries_origin, filming_locations, production_companies, languages, wins, 
@@ -98,7 +98,7 @@ app.post("/movies", async (req, res) => {
 });
 
 // Endpoint para ranking de películas con más Oscars y nominaciones por década
-app.get("/movies/decade-ranking", async (req, res) => {
+app.get("/peliculas/decade-ranking", async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT 
@@ -119,7 +119,7 @@ app.get("/movies/decade-ranking", async (req, res) => {
 });
 
 // Endpoint para promedio de duración de películas por año
-app.get("/movies/average-duration", async (req, res) => {
+app.get("/peliculas/average-duration", async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT 
@@ -138,7 +138,7 @@ app.get("/movies/average-duration", async (req, res) => {
 });
 
 // Endpoint para directores con más películas
-app.get("/movies/top-directors", async (req, res) => {
+app.get("/peliculas/top-directors", async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT 
