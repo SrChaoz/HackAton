@@ -136,10 +136,10 @@ function renderDirectorsData(data) {
 
     // Genera las filas de la tabla dinámicamente
     DirectorsElement.innerHTML = data
-        .map(movie => `
+        .map(director => `
             <tr>
-                <td>${movie.director}</td>
-                <td>${movie.movie_count}</td>
+                <td>${director.director}</td>
+                <td>${director.movie_count}</td>
             </tr>
         `)
         .join(""); // Convierte el array en un string con las filas
