@@ -166,8 +166,7 @@ app.get("/peliculas/top-directors", async (req, res) => {
       FROM peliculas
       ) AS unnest_directors
     GROUP BY director
-    ORDER BY movie_count DESC
-    LIMIT 10;
+    ORDER BY movie_count DESC;
 
 
     `);
@@ -177,6 +176,29 @@ app.get("/peliculas/top-directors", async (req, res) => {
     res.status(500).send("Error al obtener directores con más películas");
   }
 });
+
+// Endpoint para obtener los idiomas más representados
+app.get("/peliculas/languages", async (req, res) => {
+    try {
+      const result = await pool.query(`
+        SELECT 
+          language, 
+          COUNT(*) AS movie_count
+        FROM (
+          SELECT UNNEST(STRING_TO_ARRAY(languages, ',')) AS language
+          FROM peliculas
+        ) AS unnest_languages
+        GROUP BY language
+        ORDER BY movie_count DESC
+        LIMIT 10; -- Mostrar los 10 idiomas más representados
+      `);
+      res.json(result.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Error al obtener idiomas más representados");
+    }
+  });
+  
 
 // Servidor escuchando en el puerto 3000
 app.listen(3000, () => {
