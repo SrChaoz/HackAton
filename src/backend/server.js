@@ -163,7 +163,6 @@ app.get("/peliculas/top-directors", async (req, res) => {
       ) AS unnest_directors
     GROUP BY director
     ORDER BY movie_count DESC
-    LIMIT 10;
 
 
     `);

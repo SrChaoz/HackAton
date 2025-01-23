@@ -4,40 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promedio de Duración</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Directores con Más Películas</title>
+    <link rel="stylesheet" href="/src/frontend/CSS/styles.css">
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav>
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="ranking.html">Ranking de Oscars</a></li>
-            <li><a href="promedio_duracion.html" class="active">Promedio Duración</a></li>
-            <li><a href="directores.html">Directores</a></li>
+            <li><a href="promedio_duracion.html">Promedio Duración</a></li>
+            <li><a href="directores.html" class="active">Directores</a></li>
             <li><a href="grafico.html">Gráfico Idiomas</a></li>
         </ul>
     </nav>
 
     <header>
-        <h1>Promedio de Duración de las Películas por Año</h1>
+        <h1>Directores con Más Películas</h1>
     </header>
 
     <section>
         <table>
             <thead>
                 <tr>
-                    <th>Año</th>
-                    <th>Promedio Duración (min)</th>
+                    <th>Director</th>
+                    <th>Cantidad de Películas</th>
                 </tr>
             </thead>
-            <tbody id="promedio-duracion-data">
-
+            <tbody id="directores-data">
             </tbody>
         </table>
     </section>
 
-     <section id="pagination">
+    <section id="pagination">
         <button id="prev-page" onclick="changePage(currentPage - 1)">Anterior</button>
         <span id="page-numbers"></span>
         <button id="next-page" onclick="changePage(currentPage + 1)">Siguiente</button>
@@ -47,9 +47,7 @@
         <p>&copy; 2025 Sitio Web de Reportes de Películas. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="/src/frontend/app.js"></script>
 </body>
 
 </html>
-
-
