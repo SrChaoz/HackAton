@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base de Datos - Gestión</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="form.html">Agregar Datos</a></li>
+    </ul>
+  </nav>
+
+  <h1>Gestión de Clientes y Productos</h1>
+
+  <!-- Tabla de clientes -->
+  <section>
+    <h2>Clientes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody id="clientes"></tbody>
+    </table>
+  </section>
+
+  <!-- Tabla de productos -->
+  <section>
+    <h2>Productos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody id="productos"></tbody>
+    </table>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
