@@ -17,7 +17,7 @@ const pool = new Pool({
 });
 
 // Endpoint para obtener todas las películas
-app.get("/movies", async (req, res) => {
+app.get("/peliculas", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM peliculas");
     res.json(result.rows);
