@@ -1,9 +1,9 @@
-// URL base del servidor (puedes cambiarla si es diferente)
+// URL base del servidor 
 const BASE_URL = "http://localhost:3000";
 
 // Función para obtener datos del ranking de películas
 function fetchSearchEngine() {
-    const busqueda = document.getElementById("search-ranking").value; // ID correcto
+    const busqueda = document.getElementById("search-ranking").value; 
     fetch(`${BASE_URL}/peliculas/filtro?like=${encodeURIComponent(busqueda)}`)
         .then(response => {
             if (!response.ok) {
@@ -12,7 +12,7 @@ function fetchSearchEngine() {
             return response.json();
         })
         .then(data => {
-            console.log(data); // Mostrar resultados en la consola
+            console.log(data); 
             renderRankingData(data); // Función para renderizar la tabla
         })
         .catch(error => console.error("Error:", error));
@@ -20,7 +20,7 @@ function fetchSearchEngine() {
 let debounceTimer;
 function debounceFetchSearch() {
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(fetchSearchEngine, 300); // 300ms de espera
+    debounceTimer = setTimeout(fetchSearchEngine, 300); 
 }
 
 
@@ -91,12 +91,11 @@ async function fetchPromedioDuracion() {
         // Seleccionar el cuerpo de la tabla
         const promedioDuracionTableBody = document.getElementById("promedio-duracion-data");
 
-        // Limpiar la tabla antes de llenarla
         promedioDuracionTableBody.innerHTML = "";
 
         // Recorrer los datos y generar las filas de la tabla
         data.forEach((row) => {
-            console.log(row); // Verifica cada fila
+            console.log(row); 
             const tr = document.createElement("tr");
 
             const yearCell = document.createElement("td");
@@ -195,11 +194,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       new Chart(ctx, {
         type: "bar",
         data: {
-          labels: labels, // Idiomas
+          labels: labels, 
           datasets: [
             {
               label: "Número de Películas",
-              data: movieCounts, // Cantidades
+              data: movieCounts, 
               backgroundColor: [
                 "#FF5733",
                 "#33FF57",

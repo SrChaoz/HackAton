@@ -9,10 +9,10 @@ app.use(cors());
 
 // Configuración de la conexión a PostgreSQL
 const pool = new Pool({
-  user: "postgres", // Cambia por tu usuario de PostgreSQL
+  user: "postgres", 
   host: "localhost",
-  database: "hackaton", // Cambia por el nombre de tu base de datos
-  password: "postgres", // Cambia por tu contraseña
+  database: "hackaton", 
+  password: "postgres", 
   port: 5432,
 });
 
