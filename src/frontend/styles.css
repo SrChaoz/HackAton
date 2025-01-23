@@ -58,20 +58,29 @@ nav ul li a.active {
   margin-right: 15px;
 }
 
+/* Estilo normal para los enlaces */
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
   padding: 10px;
-  border-radius: 5px; /* Opcional para darle un borde más suave */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para animación */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
 }
 
+/* Efecto al pasar el mouse */
 nav ul li a:hover {
   transform: scale(1.1); /* Crece un 10% al pasar el mouse */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave */
-  background-color: #555; /* Cambia el color de fondo opcionalmente */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra flotante */
+  background-color: #555; /* Cambia el color de fondo */
+}
+
+/* Estilo para la pestaña activa */
+nav ul li a.active {
+  transform: scale(1.1); /* Mantiene el escalado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Mantiene la sombra */
+  background-color: #555; /* Mantiene el color de fondo */
 }
 
 
@@ -161,3 +170,72 @@ input[type="text"]:focus {
   border-color: #535353;
   outline: none;
 }
+
+/* Estilos para los botones de paginación */
+#pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+#pagination #page-numbers button {
+  padding: 5px 10px;
+}
+
+#pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+
+.barra-busqueda {
+  border: 1px solid #3b3b3b; /* Borde fino */
+  border-radius: 10px; /* Bordes más redondeados */
+  padding: 2px 4px; /* Reducción del padding arriba y abajo */
+  height: 35px;
+  margin: 2 auto; /* Centra la barra de búsqueda */
+  display: flex; /* Para alinear los elementos horizontalmente */
+  align-items: center; /* Centra verticalmente el input y el icono */
+  position: relative; /* Para posicionar el icono dentro del input */
+}
+
+.barra-busqueda input {
+  border: none;
+  padding: 4px 10px;
+  width: 100%; 
+  border-radius: 15px; 
+  max-width: 2500px;
+  outline: none;
+  font-size: 14px;
+}
+
+.barra-busqueda button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  position: absolute; /* Posicionar el icono dentro del input */
+  right: 10px; /* Ajusta el icono a la derecha */
+}
+
+.barra-busqueda button i {
+  color: #434444; 
+  font-size: 16px; 
+}
+
+/* Efecto al hacer foco en el campo de texto */
+.barra-busqueda input:focus {
+  border-color: #535353;
+  outline: none;
+}
+

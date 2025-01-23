@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking de Películas</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -25,7 +27,13 @@
     </header>
 
     <section>
-        <input type="text" id="search-ranking" placeholder="Buscar por título o década..." onkeyup="searchRanking()">
+        <!-- Barra de búsqueda con icono -->
+        <form action="#" method="get" class="barra-busqueda">
+            <input type="text" id="search-ranking" placeholder="Buscar por título o década..." onkeyup="searchRanking()">
+            <button type="submit">
+                <i class="fas fa-search"></i> <!-- Icono de búsqueda -->
+            </button>
+        </form>
     </section>
 
     <section>
@@ -44,6 +52,7 @@
         </table>
     </section>
 
+    <!-- Paginación -->
     <section id="pagination">
         <button id="prev-page" onclick="changePage(currentPage - 1)">Anterior</button>
         <span id="page-numbers"></span>
