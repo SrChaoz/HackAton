@@ -173,6 +173,18 @@ app.get("/peliculas/top-directors", async (req, res) => {
     res.status(500).send("Error al obtener directores con más películas");
   }
 });
+app.get("/peliculas/filtro", async (req, res, like ) => {
+  try {
+    const result = await pool.query(`
+    SELECT * FROM peliculas
+    WHERE title LIKE '%${like}%'
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error al filtrar  peliculas");
+  }
+});
 
 // Servidor escuchando en el puerto 3000
 app.listen(3000, () => {

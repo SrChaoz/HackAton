@@ -2,6 +2,16 @@
 const BASE_URL = "http://localhost:3000";
 
 // Función para obtener datos del ranking de películas
+function fetchSearchEngine(){
+    const busqueda = document.getElementById("busqueda").value;
+    fetch(`${BASE_URL}/peliculas/filtro?like=${busqueda}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        renderRankingData(data);
+    })
+    .catch(error => console.error(error));
+}
 async function fetchRankingData() {
     try {
         // Realiza la solicitud al backend
@@ -155,3 +165,4 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchPromedioDuracion();
     }
 });
+
