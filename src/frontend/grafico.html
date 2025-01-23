@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Idiomas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="ranking.html">Ranking de Oscars</a></li>
+            <li><a href="promedio_duracion.html">Promedio Duración</a></li>
+            <li><a href="directores.html">Directores</a></li>
+            <li><a href="grafico.html" class="active">Gráfico Idiomas</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Gráfico de Idiomas Más Representados</h1>
+    </header>
+
+    <section>
+        <canvas id="graficoIdiomas"></canvas>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Aplicación de Reportes de Películas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Aquí deberías cargar los datos de idiomas y crear el gráfico
+        const ctx = document.getElementById('graficoIdiomas').getContext('2d');
+        const graficoIdiomas = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Inglés', 'Español', 'Francés', 'Alemán'], // Aquí se cargan los idiomas
+                datasets: [{
+                    label: 'Número de Películas',
+                    data: [120, 80, 50, 30], // Aquí los valores de las películas por idioma
+                    backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1'],
+                    borderColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1'],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

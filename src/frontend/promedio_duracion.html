@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base de Datos - Gestión</title>
+    <title>Promedio de Duración</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,19 +14,28 @@
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="ranking.html">Ranking de Oscars</a></li>
-            <li><a href="promedio_duracion.html">Promedio Duración</a></li>
+            <li><a href="promedio_duracion.html" class="active">Promedio Duración</a></li>
             <li><a href="directores.html">Directores</a></li>
             <li><a href="grafico.html">Gráfico Idiomas</a></li>
         </ul>
     </nav>
 
     <header>
-        <h1>Gestión de Reportes de Películas</h1>
+        <h1>Promedio de Duración de las Películas por Año</h1>
     </header>
 
     <section>
-        <h2>Bienvenido al sistema de reportes de películas.</h2>
-        <p>Aquí podrás ver los reportes y gráficos sobre las películas almacenadas en la base de datos.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Año</th>
+                    <th>Promedio Duración (min)</th>
+                </tr>
+            </thead>
+            <tbody id="promedio-duracion-data">
+                <!-- Datos del reporte se cargarán aquí -->
+            </tbody>
+        </table>
     </section>
 
     <footer>
