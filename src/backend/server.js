@@ -97,6 +97,9 @@ app.post("/peliculas", async (req, res) => {
   }
 });
 
+
+
+
 // Endpoint para ranking de películas con más Oscars y nominaciones por década
 app.get("/peliculas/decade-ranking", async (req, res) => {
   try {
@@ -117,6 +120,7 @@ app.get("/peliculas/decade-ranking", async (req, res) => {
     res.status(500).send("Error al obtener ranking de películas");
   }
 });
+
 
 // Endpoint para promedio de duración de películas por año
 app.get("/peliculas/average-duration", async (req, res) => {

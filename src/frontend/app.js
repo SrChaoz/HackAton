@@ -2,6 +2,7 @@
 const BASE_URL = "http://localhost:3000";
 
 // Función para obtener datos del ranking de películas
+
 async function fetchRankingData() {
     try {
         // Realiza la solicitud al backend
