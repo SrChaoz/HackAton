@@ -101,6 +101,51 @@ async function fetchPromedioDuracion() {
     }
 }
 
+async function fetchDirectorsData() {
+    try {
+        // Realiza la solicitud al backend
+        const response = await fetch(`${BASE_URL}/peliculas/top-directors`);
+        
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error("Error al obtener los datos del servidor.");
+        }
+
+        // Convierte los datos a JSON
+        const data = await response.json();
+
+        // Renderiza los datos en la tabla
+        renderRankingData(data);
+    } catch (error) {
+        console.error("Error:", error.message);
+        const rankingDataElement = document.getElementById("directores-data");
+        rankingDataElement.innerHTML = `<tr><td colspan="4">Error al cargar los datos. Intenta nuevamente más tarde.</td></tr>`;
+    }
+}
+
+// Función para renderizar los datos en la tabla
+function renderRankingData(data) {
+    const rankingDataElement = document.getElementById("directores-data");
+
+    // Verifica si hay datos
+    if (data.length === 0) {
+        rankingDataElement.innerHTML = `<tr><td colspan="4">No se encontraron datos.</td></tr>`;
+        return;
+    }
+
+    // Genera las filas de la tabla dinámicamente
+    rankingDataElement.innerHTML = data
+        .map(movie => `
+            <tr>
+                <td>${movie.director}</td>
+                <td>${movie.movie_count}</td>
+            </tr>
+        `)
+        .join(""); // Convierte el array en un string con las filas
+}
+
+document.addEventListener("DOMContentLoaded", fetchDirectorsData);
+
 // Ejecutar la función cuando el contenido esté cargado
 document.addEventListener("DOMContentLoaded", () => {
     const promedioDuracionTableBody = document.getElementById("promedio-duracion-data");
