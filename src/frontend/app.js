@@ -177,3 +177,83 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchPromedioDuracion();
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const ctx = document.getElementById("graficoIdiomas").getContext("2d");
+  
+    try {
+      // Hacer la petición al backend para obtener los datos
+      const response = await fetch("http://localhost:3000/peliculas/languages");
+      const data = await response.json();
+  
+      // Procesar los datos para el gráfico
+      const labels = data.map((row) => row.language);
+      const movieCounts = data.map((row) => row.movie_count);
+  
+      // Crear el gráfico
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels, // Idiomas
+          datasets: [
+            {
+              label: "Número de Películas",
+              data: movieCounts, // Cantidades
+              backgroundColor: [
+                "#FF5733",
+                "#33FF57",
+                "#3357FF",
+                "#FF33A1",
+                "#F1C40F",
+                "#2ECC71",
+                "#9B59B6",
+                "#E74C3C",
+                "#3498DB",
+                "#95A5A6",
+              ],
+              borderColor: [
+                "#FF5733",
+                "#33FF57",
+                "#3357FF",
+                "#FF33A1",
+                "#F1C40F",
+                "#2ECC71",
+                "#9B59B6",
+                "#E74C3C",
+                "#3498DB",
+                "#95A5A6",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Número de Películas",
+              },
+            },
+            x: {
+              title: {
+                display: true,
+                text: "Idiomas",
+              },
+            },
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Error al cargar los datos del gráfico:", error);
+    }
+  });
+  
