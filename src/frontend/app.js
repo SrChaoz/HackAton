@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:3000";
 async function fetchRankingData() {
     try {
         // Realiza la solicitud al backend
-        const response = await fetch(`${BASE_URL}/movies/decade-ranking`);
+        const response = await fetch(`${BASE_URL}/peliculas/decade-ranking`);
         
         // Verifica si la respuesta es exitosa
         if (!response.ok) {
