@@ -33,21 +33,67 @@
         <p>&copy; 2025 Sitio Web de Reportes de Películas. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <!-- Archivo JavaScript -->
     <script>
-        // Aquí deberías cargar los datos de idiomas y crear el gráfico
-        const ctx = document.getElementById('graficoIdiomas').getContext('2d');
-        const graficoIdiomas = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Inglés', 'Español', 'Francés', 'Alemán'], // Aquí se cargan los idiomas
-                datasets: [{
-                    label: 'Número de Películas',
-                    data: [120, 80, 50, 30], // Aquí los valores de las películas por idioma
-                    backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1'],
-                    borderColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1'],
-                    borderWidth: 1
-                }]
+        document.addEventListener("DOMContentLoaded", async () => {
+            const ctx = document.getElementById("graficoIdiomas").getContext("2d");
+
+            try {
+                // Hacer la petición al backend para obtener los datos
+                const response = await fetch("http://localhost:3000/peliculas/languages");
+                const data = await response.json();
+
+                // Procesar los datos para el gráfico
+                const labels = data.map((row) => row.language); // Idiomas
+                const movieCounts = data.map((row) => row.movie_count); // Cantidades
+
+                // Crear el gráfico dinámicamente
+                new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: labels, // Idiomas obtenidos del backend
+                        datasets: [
+                            {
+                                label: "Número de Películas",
+                                data: movieCounts, // Cantidad de películas por idioma
+                                backgroundColor: labels.map(
+                                    () =>
+                                        `#${Math.floor(Math.random() * 16777215).toString(16)}` // Colores aleatorios
+                                ),
+                                borderColor: labels.map(
+                                    () =>
+                                        `#${Math.floor(Math.random() * 16777215).toString(16)}`
+                                ),
+                                borderWidth: 1,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true,
+                            },
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: "Número de Películas",
+                                },
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Idiomas",
+                                },
+                            },
+                        },
+                    },
+                });
+            } catch (error) {
+                console.error("Error al cargar los datos del gráfico:", error);
             }
         });
     </script>
