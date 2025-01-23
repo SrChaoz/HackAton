@@ -115,26 +115,26 @@ async function fetchDirectorsData() {
         const data = await response.json();
 
         // Renderiza los datos en la tabla
-        renderRankingData(data);
+        renderDirectorsData(data);
     } catch (error) {
         console.error("Error:", error.message);
-        const rankingDataElement = document.getElementById("directores-data");
-        rankingDataElement.innerHTML = `<tr><td colspan="4">Error al cargar los datos. Intenta nuevamente más tarde.</td></tr>`;
+        const DirectorsElement = document.getElementById("directores-data");
+        DirectorsElement.innerHTML = `<tr><td colspan="4">Error al cargar los datos. Intenta nuevamente más tarde.</td></tr>`;
     }
 }
 
 // Función para renderizar los datos en la tabla
-function renderRankingData(data) {
-    const rankingDataElement = document.getElementById("directores-data");
+function renderDirectorsData(data) {
+    const DirectorsElement = document.getElementById("directores-data");
 
     // Verifica si hay datos
     if (data.length === 0) {
-        rankingDataElement.innerHTML = `<tr><td colspan="4">No se encontraron datos.</td></tr>`;
+        DirectorsElement.innerHTML = `<tr><td colspan="4">No se encontraron datos.</td></tr>`;
         return;
     }
 
     // Genera las filas de la tabla dinámicamente
-    rankingDataElement.innerHTML = data
+    DirectorsElement.innerHTML = data
         .map(movie => `
             <tr>
                 <td>${movie.director}</td>
