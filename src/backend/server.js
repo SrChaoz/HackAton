@@ -120,22 +120,35 @@ app.get("/peliculas/decade-ranking", async (req, res) => {
 
 // Endpoint para promedio de duración de películas por año
 app.get("/peliculas/average-duration", async (req, res) => {
-  try {
-    const result = await pool.query(`
-      SELECT 
-        year, 
-        ROUND(AVG(duration::NUMERIC), 2) AS avg_duration
-      FROM peliculas
-      WHERE duration IS NOT NULL
-      GROUP BY year
-      ORDER BY year ASC
-    `);
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error al obtener promedio de duración");
-  }
-});
+    try {
+      const result = await pool.query(`
+        SELECT 
+          year, 
+          ROUND(AVG(
+            CASE
+              WHEN duration ~ '^[0-9]+h [0-9]+m$' THEN 
+                (split_part(duration, 'h', 1)::NUMERIC * 60) + 
+                split_part(split_part(duration, ' ', 2), 'm', 1)::NUMERIC
+              WHEN duration ~ '^[0-9]+h$' THEN 
+                split_part(duration, 'h', 1)::NUMERIC * 60
+              WHEN duration ~ '^[0-9]+m$' THEN 
+                split_part(duration, 'm', 1)::NUMERIC
+              ELSE 
+                NULL
+            END
+          ), 2) AS avg_duration
+        FROM peliculas
+        WHERE duration IS NOT NULL
+        GROUP BY year
+        ORDER BY year ASC
+      `);
+      res.json(result.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Error al obtener promedio de duración");
+    }
+  });
+  
 
 // Endpoint para directores con más películas
 app.get("/peliculas/top-directors", async (req, res) => {

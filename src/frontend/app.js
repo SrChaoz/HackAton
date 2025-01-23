@@ -49,3 +49,63 @@ function renderRankingData(data) {
 
 // Ejecuta la función al cargar la página
 document.addEventListener("DOMContentLoaded", fetchRankingData);
+
+
+
+// Función para obtener y renderizar el promedio de duración
+async function fetchPromedioDuracion() {
+    try {
+        // Solicitar los datos al servidor
+        const response = await fetch(`${BASE_URL}/peliculas/average-duration`);
+
+        if (!response.ok) {
+            throw new Error("Error al obtener los datos del servidor");
+        }
+
+        // Parsear la respuesta como JSON
+        const data = await response.json();
+        console.log(data); // Verifica los datos recibidos
+
+        // Seleccionar el cuerpo de la tabla
+        const promedioDuracionTableBody = document.getElementById("promedio-duracion-data");
+
+        // Limpiar la tabla antes de llenarla
+        promedioDuracionTableBody.innerHTML = "";
+
+        // Recorrer los datos y generar las filas de la tabla
+        data.forEach((row) => {
+            console.log(row); // Verifica cada fila
+            const tr = document.createElement("tr");
+
+            const yearCell = document.createElement("td");
+            yearCell.textContent = row.year;
+
+            const avgDurationCell = document.createElement("td");
+            avgDurationCell.textContent = row.avg_duration;
+
+            tr.appendChild(yearCell);
+            tr.appendChild(avgDurationCell);
+
+            promedioDuracionTableBody.appendChild(tr);
+        });
+    } catch (error) {
+        console.error(error);
+
+        // Mostrar mensaje de error en la tabla
+        const promedioDuracionTableBody = document.getElementById("promedio-duracion-data");
+        promedioDuracionTableBody.innerHTML = `
+            <tr>
+                <td colspan="2" style="text-align: center; color: red;">Error al cargar los datos</td>
+            </tr>
+        `;
+    }
+}
+
+// Ejecutar la función cuando el contenido esté cargado
+document.addEventListener("DOMContentLoaded", () => {
+    const promedioDuracionTableBody = document.getElementById("promedio-duracion-data");
+
+    if (promedioDuracionTableBody) {
+        fetchPromedioDuracion();
+    }
+});
